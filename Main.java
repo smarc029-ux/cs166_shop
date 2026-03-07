@@ -7,8 +7,8 @@ public class Main {
 
     public static void main(String[] args) {
 
-        String url = "jdbc:postgresql://localhost:36238/corti001_shop";
-        String user = "corti001";
+        String url = "jdbc:postgresql://localhost:42408/smarc029_shop";
+        String user = "smarc029";
         String password = "";
 
         try (
@@ -37,12 +37,15 @@ public class Main {
                 switch (choice) {
                     case 1:
                         System.out.println("Add Customer selected.");
+                        Add_functions.addCustomer(conn);
                         break;
                     case 2:
                         System.out.println("Add Mechanic selected.");
+                        Add_functions.addMechanic(conn);
                         break;
                     case 3:
                         System.out.println("Add Car selected.");
+                        Add_functions.addCar(conn);
                         break;
                     case 4:
                         System.out.println("Initiate Service Request selected.");
