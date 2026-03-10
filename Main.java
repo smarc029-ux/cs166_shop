@@ -54,7 +54,8 @@ public class Main {
                         System.out.println("Close Service Request selected.");
                         break;
                     case 6:
-                        System.out.println("Reports selected.");
+                        System.out.println("Lists selected.");
+                        Query_functions.allQueries(conn, scanner);
                         break;
                     case 0:
                         running = false;
