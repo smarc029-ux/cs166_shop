@@ -120,7 +120,21 @@ public class Add_functions {
                 return;
             }
 
-            String sql = "INSERT INTO mechanic(employee_id,fname,lname,years_of_experience) VALUES(?,?,?,?)";
+            System.out.println("VIN of car they specialize in:");
+            String VIN = sc.nextLine();
+
+            String sqlCheck = "SELECT * FROM car WHERE vin = ?";
+            PreparedStatement stmtCustomer = conn.prepareStatement(sqlCheck);
+            stmtCustomer.setString(1, VIN);
+
+            ResultSet rsCustomer = stmtCustomer.executeQuery();
+
+            if(!rsCustomer.next()){
+                System.out.println("Error: Car does not exist");
+                return;
+            }
+
+            String sql = "INSERT INTO mechanic(employee_id,fname,lname,years_of_experience,vin) VALUES(?,?,?,?,?)";
 
             PreparedStatement stmt = conn.prepareStatement(sql);
 
@@ -128,6 +142,7 @@ public class Add_functions {
             stmt.setString(2,fname);
             stmt.setString(3,lname);
             stmt.setInt(4,exp);
+            stmt.setString(5,VIN);
 
             stmt.executeUpdate();
 
